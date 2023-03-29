@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FournotfourComponent } from './fournotfour/fournotfour.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfigComponent } from './config/config.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PostFormComponent } from './post-form/post-form.component';
+import { PostsService } from './services/posts.service';
 
 @NgModule({
   declarations: [
@@ -14,13 +19,17 @@ import { FournotfourComponent } from './fournotfour/fournotfour.component';
     PostListComponent,
     HomeComponent,
     SinglePostComponent,
-    FournotfourComponent
+    FournotfourComponent,    
+    ConfigComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,23 @@
+<p>config works!</p>
+
+<div *ngFor="let cfg of config">
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Posted At</th>
+      <th>Posted By</th>
+      <th colspan="2">Action</th>
+    </tr>
+    <tr>
+      <td>
+        <b>{{ cfg.title }}</b>
+      </td>
+      <td>{{ cfg.content }}</td>
+      <td>{{ cfg.postedAt }}</td>
+      <td>{{ cfg.postedBy }}</td>
+      <td><button>Update</button></td>
+      <td><button>Delete</button></td>
+    </tr>  
+  </table>
+</div>

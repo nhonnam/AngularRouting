@@ -1,0 +1,21 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit(postForm)">
+  <div>
+    <label>
+      Title:
+      <input formControlName="title" placeholder="Title" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Content:
+      <input formControlName="content" placeholder="Content" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Created By:
+      <input formControlName="postedBy" placeholder="Posted By" />
+    </label>
+  </div>
+  <button type="submit">Post</button>
+</form>
