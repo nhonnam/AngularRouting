@@ -23,6 +23,9 @@ export class PostFormComponent implements OnInit {
 
   onSubmit(postForm: any) {
     console.log(postForm);
-    this.configService.addPost(postForm.value).subscribe();
+    this.configService.addPost(postForm.value).subscribe({
+      next: (res) => {
+      }
+    });
   }
 }

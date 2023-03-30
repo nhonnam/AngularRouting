@@ -3,7 +3,7 @@ import {
   HttpClient,
   HttpResponse,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -12,16 +12,14 @@ import { Post } from '../model/post';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ConfigService {
-
   //configUrl = 'assets/config.json';
   configUrl = 'https://6423b55077e7062b3e37476f.mockapi.io/posts';
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-    })
+      'Content-Type': 'application/json',
+    }),
   };
 
   constructor(private http: HttpClient) {}
@@ -32,16 +30,22 @@ export class ConfigService {
       .pipe(catchError(this.handleError));
   }
 
-  addPost(hero: Post): Observable<Post> {
-    return this.http.post<Post>(this.configUrl, hero, this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+  addPost(post: Post): Observable<Post> {
+    return this.http
+      .post<Post>(this.configUrl, post, this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
   // getConfigResponse(): Observable<HttpResponse<any>> {
   //   return this.http.get<any>(
   //     this.configUrl, { observe: 'response' });
   // }
+
+  deletePost(id: number): Observable<unknown> {
+    const url = `${this.configUrl}/${id}`; // DELETE api/heroes/42
+    return this.http
+      .delete(url, this.httpOptions)
+      
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

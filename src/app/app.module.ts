@@ -8,7 +8,7 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FournotfourComponent } from './fournotfour/fournotfour.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigComponent } from './config/config.component';
+import { PostComponent } from './post/post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostsService } from './services/posts.service';
@@ -20,7 +20,7 @@ import { PostsService } from './services/posts.service';
     HomeComponent,
     SinglePostComponent,
     FournotfourComponent,    
-    ConfigComponent,
+    PostComponent,
     PostFormComponent,
   ],
   imports: [

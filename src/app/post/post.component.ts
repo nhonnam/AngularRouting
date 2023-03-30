@@ -4,23 +4,23 @@ import { ConfigService } from '../services/config.service';
 import { PostsService } from '../services/posts.service';
 
 @Component({
-  selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css'],
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css'],
 })
-export class ConfigComponent implements OnInit {
-  config: Array<any> | undefined;
-  constructor(private postsService: PostsService) {
-    this.config = postsService.config;
-    console.log("config",this.config);
-  }
-  // constructor(private configService: ConfigService) {}
-  // showConfig() {
-  //   this.configService.getConfig().subscribe((data: Post) => {
-  //     console.log(data);
-  //     this.config = data;
-  //   });
+export class PostComponent implements OnInit {
+  config!: any[];
+  // constructor(private postsService: PostsService) {
+  //   this.config = postsService.config;
+  //   console.log("config",this.config);
   // }
+  constructor(private configService: ConfigService) {}
+
+  showPost() {
+    this.configService.getConfig().subscribe((data: any) => {
+      this.config = data;
+    });
+  }
 
   // showConfigResponse() {
   //   this.configService.getConfigResponse()
@@ -38,8 +38,16 @@ export class ConfigComponent implements OnInit {
   //     });
   // }
 
+  deletePost(id: number) {
+    this.configService.deletePost(id).subscribe({
+      next: (res) => {
+        this.config = this.config.filter((item) => item.id != id);
+      },
+    });
+  }
+
   ngOnInit() {
-    //this.showConfig();
+    this.showPost();
     //this.showConfigResponse();
   }
 }

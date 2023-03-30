@@ -1,4 +1,4 @@
-<p>config works!</p>
+<p>post works!</p>
 
 <div *ngFor="let cfg of config">
   <table>
@@ -16,8 +16,8 @@
       <td>{{ cfg.content }}</td>
       <td>{{ cfg.postedAt }}</td>
       <td>{{ cfg.postedBy }}</td>
-      <td><button>Update</button></td>
-      <td><button>Delete</button></td>
-    </tr>  
+      <td><button>Edit</button></td>
+      <td><button (click)="deletePost(cfg.id)">Delete</button></td>
+    </tr>
   </table>
 </div>
