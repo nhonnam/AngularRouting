@@ -40,11 +40,17 @@ export class ConfigService {
   //     this.configUrl, { observe: 'response' });
   // }
 
+  updatePost(post: Post, id: number): Observable<Post> {
+    return this.http
+      .put<Post>(`${this.configUrl}/${id}`, post, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   deletePost(id: number): Observable<unknown> {
     const url = `${this.configUrl}/${id}`; // DELETE api/heroes/42
     return this.http
       .delete(url, this.httpOptions)
-      
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

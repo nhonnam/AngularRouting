@@ -1,8 +1,9 @@
 <p>post works!</p>
 
-<div *ngFor="let cfg of config">
+<div *ngFor="let cfg of postList">
   <table>
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Content</th>
       <th>Posted At</th>
@@ -10,14 +11,17 @@
       <th colspan="2">Action</th>
     </tr>
     <tr>
+      <td>{{ cfg.id }}</td>
       <td>
         <b>{{ cfg.title }}</b>
       </td>
       <td>{{ cfg.content }}</td>
       <td>{{ cfg.postedAt }}</td>
       <td>{{ cfg.postedBy }}</td>
-      <td><button>Edit</button></td>
+      <td><button (click)="editPost(cfg)">Edit</button></td>
       <td><button (click)="deletePost(cfg.id)">Delete</button></td>
     </tr>
   </table>
 </div>
+
+<app-update-form (newItemEvent)="updatePost($event)"></app-update-form>

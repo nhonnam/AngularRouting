@@ -2,34 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { HomeComponent } from './home/home.component';
-import { SinglePostComponent } from './single-post/single-post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FournotfourComponent } from './fournotfour/fournotfour.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostComponent } from './post/post.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { PostFormComponent } from './post-form/post-form.component';
-import { PostsService } from './services/posts.service';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent,
-    HomeComponent,
-    SinglePostComponent,
-    FournotfourComponent,    
-    PostComponent,
-    PostFormComponent,
+    FournotfourComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    DashboardModule,
+    AuthModule,
   ],
-  providers: [PostsService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

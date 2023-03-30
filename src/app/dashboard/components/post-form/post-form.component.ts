@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { ConfigService } from '../services/config.service';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-post-form',
@@ -8,7 +8,17 @@ import { ConfigService } from '../services/config.service';
   styleUrls: ['./post-form.component.css'],
 })
 export class PostFormComponent implements OnInit {
-  postForm: any;
+  postForm: FormGroup;
+
+  currentPostList!: any[];
+
+  showPost() {
+    this.configService.getConfig().subscribe((data: any) => {
+      this.currentPostList = data;
+      console.log(this.currentPostList);
+      
+    });
+  }
 
   constructor(fb: FormBuilder, private configService: ConfigService) {
     this.postForm = fb.group({
@@ -19,13 +29,16 @@ export class PostFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.showPost();
+  }
 
   onSubmit(postForm: any) {
     console.log(postForm);
     this.configService.addPost(postForm.value).subscribe({
-      next: (res) => {
+      next: (res) => {this.currentPostList = [res, ...(this.currentPostList as any[])]
       }
     });
+    this.postForm.reset();
   }
 }

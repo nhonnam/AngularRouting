@@ -1,0 +1,16 @@
+<p>update-form works!</p>
+<form [formGroup]="updateForm">
+  <div>
+    <label>
+      ID:
+      <input formControlName="id" placeholder="ID" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Title:
+      <input formControlName="title" placeholder="Title" />
+    </label>
+  </div>
+  <button type="submit" (click)="onSubmit()">Update</button>
+</form>

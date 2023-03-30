@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { PostFormComponent } from './dashboard/components/post-form/post-form.component';
 import { FournotfourComponent } from './fournotfour/fournotfour.component';
-import { HomeComponent } from './home/home.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { SinglePostComponent } from './single-post/single-post.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'posts', component: PostListComponent },
-  { path: 'post/:id/:title', component: SinglePostComponent },
+  { path: 'post', component: PostFormComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: FournotfourComponent },
 ];
 
