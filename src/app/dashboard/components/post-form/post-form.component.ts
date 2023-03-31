@@ -16,11 +16,15 @@ export class PostFormComponent implements OnInit {
   showPost() {
     this.configService.getConfig().subscribe((data: any) => {
       this.currentPostList = data;
-      console.log(this.currentPostList);     
+      console.log(this.currentPostList);
     });
   }
 
-  constructor(fb: FormBuilder, private configService: ConfigService, private router: Router) {
+  constructor(
+    fb: FormBuilder,
+    private configService: ConfigService,
+    private router: Router
+  ) {
     this.postForm = fb.group({
       title: [''],
       content: [''],
@@ -36,14 +40,15 @@ export class PostFormComponent implements OnInit {
   onSubmit(postForm: any) {
     console.log(postForm);
     this.configService.addPost(postForm.value).subscribe({
-      next: (res) => {this.currentPostList = [...(this.currentPostList as any[]), res]
-      }
+      next: (res) => {
+        this.currentPostList = [...(this.currentPostList as any[]), res];
+      },
     });
     this.postForm.reset();
   }
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }
