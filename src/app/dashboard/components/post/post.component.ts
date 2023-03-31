@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from '../../model/post';
 import { ConfigService } from '../../services/config.service';
 
@@ -15,7 +16,10 @@ export class PostComponent implements OnInit {
   //   this.config = postsService.config;
   //   console.log("config",this.config);
   // }
-  constructor(private readonly configService: ConfigService) {}
+  constructor(
+    private readonly configService: ConfigService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.showPost();
@@ -53,4 +57,5 @@ export class PostComponent implements OnInit {
 
     console.log(this.postList);
   }
+
 }

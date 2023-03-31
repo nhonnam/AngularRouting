@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConfigService } from '../../services/config.service';
 
 @Component({
@@ -15,12 +16,11 @@ export class PostFormComponent implements OnInit {
   showPost() {
     this.configService.getConfig().subscribe((data: any) => {
       this.currentPostList = data;
-      console.log(this.currentPostList);
-      
+      console.log(this.currentPostList);     
     });
   }
 
-  constructor(fb: FormBuilder, private configService: ConfigService) {
+  constructor(fb: FormBuilder, private configService: ConfigService, private router: Router) {
     this.postForm = fb.group({
       title: [''],
       content: [''],
@@ -36,9 +36,14 @@ export class PostFormComponent implements OnInit {
   onSubmit(postForm: any) {
     console.log(postForm);
     this.configService.addPost(postForm.value).subscribe({
-      next: (res) => {this.currentPostList = [res, ...(this.currentPostList as any[])]
+      next: (res) => {this.currentPostList = [...(this.currentPostList as any[]), res]
       }
     });
     this.postForm.reset();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

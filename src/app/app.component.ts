@@ -10,25 +10,22 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'ang-routing';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    
+  }
 
   ngOnInit() {
-    const obsTest$ = new Observable((observer) => {
-      observer.next('Returned from Observable');
-    }).subscribe((value) => {
-      console.log(value);
-    });
+    // const obsTest$ = new Observable((observer) => {
+    //   observer.next('Returned from Observable');
+    // }).subscribe((value) => {
+    //   console.log(value);
+    // });
+    // const obsTest = function () {
+    //   console.log('printed from function');
+    // };
+    // obsTest();
 
-    const obsTest = function () {
-      console.log('printed from function');
-    };
-    obsTest();
   }
 
-  onSubmit() {
-    // this.router.navigate(['/post', 1, 'postTitle']);
-    this.router.navigate(['/posts'], {
-      queryParams: { page: 1, order: 'newest' },
-    });
-  }
+
 }

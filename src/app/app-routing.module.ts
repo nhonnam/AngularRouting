@@ -6,7 +6,7 @@ import { PostFormComponent } from './dashboard/components/post-form/post-form.co
 import { FournotfourComponent } from './fournotfour/fournotfour.component';
 
 const routes: Routes = [
-  { path: 'post', component: PostFormComponent },
+  { path: 'dashboard', component: PostFormComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: FournotfourComponent },
 ];
